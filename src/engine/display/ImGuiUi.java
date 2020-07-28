@@ -1,14 +1,15 @@
 package engine.display;
 
 import imgui.type.ImBoolean;
+import user.Window;
 import imgui.ImGui;
 import imgui.flag.ImGuiColorEditFlags;
 import imgui.flag.ImGuiCond;
 
 public final class ImGuiUi {
-
-    public final float[] background_color = new float[]{0, 1, 0};
-
+	
+	public final float[] background_color = new float[]{Window.WINDOW_BACKGROUND_COLOR.x, Window.WINDOW_BACKGROUND_COLOR.y, Window.WINDOW_BACKGROUND_COLOR.z};
+ 
     private final ImBoolean show_demo_window = new ImBoolean();
     
     private boolean enable_wireframe_mode = false;

@@ -8,6 +8,7 @@ import engine.display.DisplayManager;
 import engine.render.Renderer;
 import engine.texture.TextureManager;
 import user.Scene;
+import user.Window;
 
 public class Looper implements Runnable{
 	
@@ -20,7 +21,7 @@ public class Looper implements Runnable{
 			e.printStackTrace();
 		}
 		
-		final int FPS = 60;
+		final int FPS = Window.FPS;
 		long last_time = System.currentTimeMillis();
 		int delta = 0;
 		
