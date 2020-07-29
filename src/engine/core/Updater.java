@@ -12,7 +12,6 @@ public class Updater{
 	
 	public static void Update() {
 		Input.InputUpdateEvents();
-		glfwPollEvents();
 		
 		for(Entity entity: Looper.entity_renderer) {
 			entity.Update();

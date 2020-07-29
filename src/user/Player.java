@@ -1,6 +1,6 @@
 package user;
 
-import org.lwjgl.glfw.GLFW;
+import static org.lwjgl.glfw.GLFW.*;
 import org.lwjgl.util.vector.Vector2f;
 import org.lwjgl.util.vector.Vector3f;
 
@@ -37,29 +37,29 @@ public class Player extends Entity{
 	public void Update() {
 		collision_box.Update();
 		
-		if(Input.keys[GLFW.GLFW_KEY_A] == GLFW.GLFW_PRESS) {
+		if(Input.keys[GLFW_KEY_A] == GLFW_PRESS) {
 			left = true;
 			right = false;
-		}else if(Input.keys[GLFW.GLFW_KEY_D] == GLFW.GLFW_PRESS) {
+		}else if(Input.keys[GLFW_KEY_D] == GLFW_PRESS) {
 			left = false;
 			right = true;
-		}else if(Input.keys[GLFW.GLFW_KEY_W] == GLFW.GLFW_PRESS) {
+		}else if(Input.keys[GLFW_KEY_W] == GLFW_PRESS) {
 			up = true;
 			down = false;
-		}else if(Input.keys[GLFW.GLFW_KEY_S] == GLFW.GLFW_PRESS) {
+		}else if(Input.keys[GLFW_KEY_S] == GLFW_PRESS) {
 			up = false;
 			down = true;
 		}
 		
-		if(Input.keys[GLFW.GLFW_KEY_A] == GLFW.GLFW_RELEASE) {
+		if(Input.keys[GLFW_KEY_A] == GLFW_RELEASE) {
 			left = false;
-		}else if(Input.keys[GLFW.GLFW_KEY_D] == GLFW.GLFW_RELEASE) {
+		}else if(Input.keys[GLFW_KEY_D] == GLFW_RELEASE) {
 			right = false;
 		}
 		
-		if(Input.keys[GLFW.GLFW_KEY_W] == GLFW.GLFW_RELEASE) {
+		if(Input.keys[GLFW_KEY_W] == GLFW_RELEASE) {
 			up = false;
-		}else if(Input.keys[GLFW.GLFW_KEY_S] == GLFW.GLFW_RELEASE) {
+		}else if(Input.keys[GLFW_KEY_S] == GLFW_RELEASE) {
 			down = false;
 		}
 		
@@ -74,6 +74,9 @@ public class Player extends Entity{
 		}else if(down) {
 			SetDeltaPosition(new Vector3f(0, 5, 0));
 		}
+		
+		if(Input.mouse_buttons[GLFW_MOUSE_BUTTON_1] == GLFW_PRESS)
+			System.out.println("MOUSE WAS PRESSED");
 	}
 
 }

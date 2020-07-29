@@ -1,14 +1,12 @@
 package user;
 
-import java.awt.Color;
-
 import org.lwjgl.util.vector.Vector3f;
 
 public final class Window {
 	private Window() {}
 	
 	//width and height of window
-	public static final int WINDOW_WIDTH = 500;
+	public static final int WINDOW_WIDTH = 1000;
 	public static final int WINDOW_HEIGHT = 500;
 	
 	//values range from 1 >= 0
