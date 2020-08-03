@@ -6,7 +6,7 @@ import org.lwjgl.glfw.GLFWErrorCallback;
 
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
-import user.Window;
+import user.settings.Window;
 
 import org.lwjgl.glfw.*;
 import org.lwjgl.opengl.GL;
@@ -31,8 +31,8 @@ import static org.lwjgl.system.MemoryUtil.*;
 public final class DisplayManager {
     public static long window; 
     
-    public static final int WINDOW_WIDTH = Window.WINDOW_WIDTH;
-    public static final int WINDOW_HEIGHT = Window.WINDOW_HEIGHT;
+    public static int WINDOW_WIDTH = Window.WINDOW_WIDTH;
+    public static int WINDOW_HEIGHT = Window.WINDOW_HEIGHT;
 
     private final static ImGuiImplGlfw im_gui_glfw = new ImGuiImplGlfw();
     private final static ImGuiImplGl3 im_gui_gl3 = new ImGuiImplGl3();
@@ -50,7 +50,7 @@ public final class DisplayManager {
         SetupImGui();
         im_gui_gl3.init(glsl_version);
         
-        Input.UpdateKeys();
+        Input.SetupInputCallbacks();
         GLUtil.setupDebugMessageCallback();
     }
     

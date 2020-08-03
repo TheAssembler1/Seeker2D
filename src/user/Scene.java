@@ -7,8 +7,9 @@ import engine.display.DisplayManager;
 
 public class Scene {
 	public void Start() {
-		new Player(new Vector3f(DisplayManager.WINDOW_WIDTH/2, DisplayManager.WINDOW_HEIGHT/2, 0), new Vector2f(100, 100), 0);
-		new TestCollision1(new Vector3f(DisplayManager.WINDOW_WIDTH/2 - 300, DisplayManager.WINDOW_HEIGHT/2, 0), new Vector2f(100, 100), 0);
-		new TestCollision2(new Vector3f(DisplayManager.WINDOW_WIDTH/2 + 300, DisplayManager.WINDOW_HEIGHT/2, 0), new Vector2f(100, 100), 0);
+		new Spaceship(new Vector3f(DisplayManager.WINDOW_WIDTH/2, DisplayManager.WINDOW_HEIGHT - 50, 2), new Vector2f(50, 50), 0);
+		new WorldSpinning(new Vector3f(DisplayManager.WINDOW_WIDTH - 40, DisplayManager.WINDOW_HEIGHT - 30, 3), new Vector2f(50, 50), 0);
+		new Background(new Vector3f(DisplayManager.WINDOW_WIDTH/2, -(DisplayManager.WINDOW_HEIGHT/2), 1), new Vector2f(DisplayManager.WINDOW_WIDTH, DisplayManager.WINDOW_HEIGHT), 0);
+		new Background(new Vector3f(DisplayManager.WINDOW_WIDTH/2, DisplayManager.WINDOW_HEIGHT/2, 1), new Vector2f(DisplayManager.WINDOW_WIDTH, DisplayManager.WINDOW_HEIGHT), 0);
 	}
 }

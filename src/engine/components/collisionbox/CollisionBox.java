@@ -23,7 +23,7 @@ public class CollisionBox extends Entity{
 	private String collision_box_id;
 
 	public CollisionBox(Entity entity, boolean show, String collision_box_id) {
-		super(entity.GetPosition(), entity.GetPixelScale(), entity.GetRotation());
+		super(new Vector3f(entity.GetPosition().x, entity.GetPosition().y, 5), entity.GetPixelScale(), entity.GetRotation());
 		this.entity = entity;
 		this.show = show;
 		this.collision_box_id = collision_box_id;
@@ -31,7 +31,6 @@ public class CollisionBox extends Entity{
 		enabled = new StaticTexture("engineres/collision_box_enabled.png");
 		disabled = new StaticTexture("engineres/collision_box_disabled.png");
 		
-		Renderer.AddEntity(this);
 		AddCollisionBox(this);
 	}
 	
@@ -102,7 +101,7 @@ public class CollisionBox extends Entity{
 	@Override
 	public void Update() {
 		// TODO Auto-generated method stub
-		SetPosition(entity.GetPosition());
+		SetPosition(new Vector2f(entity.GetPosition().x, entity.GetPosition().y));
 		SetRotation(entity.GetRotation());
 		SetScale(entity.GetScale());
 	}

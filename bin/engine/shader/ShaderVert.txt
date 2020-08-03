@@ -1,6 +1,6 @@
 #version 330 core
 
-layout (location = 0) in vec3 in_vertices;
+layout (location = 0) in vec2 in_vertices;
 layout (location = 1) in vec2 in_texture_coords;
 
 uniform mat4 ortho_proj_mat;
@@ -9,7 +9,7 @@ uniform mat4 trans_mat;
 out vec2 texture_coords;
 
 void main(){
-	vec4 world_position = trans_mat * vec4(in_vertices, 1.0);
+	vec4 world_position = trans_mat * vec4(in_vertices, 0.0, 1.0);
 	gl_Position = ortho_proj_mat * world_position;
 	
 	texture_coords = in_texture_coords;

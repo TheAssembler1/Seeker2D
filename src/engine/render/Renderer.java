@@ -2,6 +2,8 @@ package engine.render;
 
 import static org.lwjgl.opengl.GL32.*;
 
+import java.util.List;
+
 import engine.components.entities.Entity;
 import engine.core.Looper;
 import engine.display.DisplayManager;
@@ -9,6 +11,7 @@ import engine.maths.Matrices;
 import engine.maths.Vector3i;
 import engine.shader.ShaderManager;
 import engine.texture.TextureManager;
+import user.settings.General;
 
 public class Renderer {
 	private Renderer() {}
@@ -25,7 +28,7 @@ public class Renderer {
 		VERT_ID = (int)programs.x;
 		FRAGMENT_ID = (int)programs.y;
 		SHADER_ID = (int)programs.z;
-		
+
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
@@ -39,7 +42,7 @@ public class Renderer {
 	}
 	
 	public static void AddEntity(Entity entity) {
-		Looper.entity_renderer.add(entity);
+		Looper.add_to_entity_renderer.add(entity);
 	}
 	
 	private static void RendererPrepare() {
@@ -53,7 +56,7 @@ public class Renderer {
 		glBindVertexArray(entity.GetVaoId());
 		
 		ShaderManager.LoadMatrix4("trans_mat", Matrices.CreateTransformationmatrix(entity.GetPosition(), entity.GetScale(), entity.GetRotation()), SHADER_ID);
-		ShaderManager.LoadMatrix4("ortho_proj_mat", Matrices.CreateViewMatrix(0, DisplayManager.WINDOW_WIDTH, 0, DisplayManager.WINDOW_HEIGHT, 5, -5), SHADER_ID);
+		ShaderManager.LoadMatrix4("ortho_proj_mat", Matrices.CreateViewMatrix(0, DisplayManager.WINDOW_WIDTH, 0, DisplayManager.WINDOW_HEIGHT, General.LAYERS, 1), SHADER_ID);
 		
 		glEnableVertexAttribArray(0);
 		glEnableVertexAttribArray(1);
@@ -74,8 +77,9 @@ public class Renderer {
 	
 	public static void Render() {
 		RendererPrepare();
-		for(Entity entity: Looper.entity_renderer) {
-			RenderEntity(entity);
+		for(List<Entity> entity_list: Looper.entity_renderer) {
+			for(Entity entity: entity_list)
+				RenderEntity(entity);
 		}
 	}
 }

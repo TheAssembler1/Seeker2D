@@ -1,7 +1,7 @@
 package engine.display;
 
 import imgui.type.ImBoolean;
-import user.Window;
+import user.settings.Window;
 import imgui.ImGui;
 import imgui.flag.ImGuiColorEditFlags;
 import imgui.flag.ImGuiCond;

@@ -1,6 +1,7 @@
 package engine.input;
 
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL32.*;
 
 import java.nio.DoubleBuffer;
 
@@ -32,12 +33,18 @@ public class Input {
 		glfwGetCursorPos(DisplayManager.window, cursor_pos_x, cursor_pos_y);
 	}
 	
-	public static void UpdateKeys() {
+	public static void SetupInputCallbacks() {
 		glfwSetKeyCallback(DisplayManager.window, (window, key, scancode, action, mods) -> {
 			keys[key] = action;
 		});
 		glfwSetMouseButtonCallback(DisplayManager.window, (window, button, action, mods) -> {
 			mouse_buttons[button] = action;
+		});
+		glfwSetWindowSizeCallback(DisplayManager.window, (window, width, height) ->{
+			DisplayManager.WINDOW_WIDTH = width;
+			DisplayManager.WINDOW_HEIGHT = height;
+			
+			glViewport(0, 0, DisplayManager.WINDOW_WIDTH, DisplayManager.WINDOW_HEIGHT);
 		});
 	}
 
